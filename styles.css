@@ -1,0 +1,150 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(38, 14, 35);
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;  /* Posiziona la scritta sopra la palla */
+    align-items: center;     /* Centra il tutto */
+}
+
+/* Palla con dimensioni adattabili */
+.ball {
+    width: min(90vw, 350px);
+    height: min(90vw, 350px);
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), black 80%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.1), 0 20px 40px rgba(0, 0, 0, 0.7);
+    
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)); /* Ombra per profondità */
+}
+
+
+
+/* Effetto riflesso */
+.ball::before {
+    content: "";
+    width: 40%;
+    height: 40%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 80%);
+    position: absolute;
+    top: 12%;
+    left: 15%;
+    border-radius: 50%;
+    opacity: 0.7;
+    filter: blur(8px);
+}
+
+/* Parte bianca come nella palla da biliardo */
+.white-circle {
+    width: 50%;
+    height: 50%;
+    background: radial-gradient(circle, white, #ddd);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Triangolo dentro la parte bianca */
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 70px solid transparent;
+    border-right: 70px solid transparent;
+    border-bottom: 120px solid rgb(87, 4, 87);
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.6)); /* Ombra morbida */
+}
+
+.ball:active {
+    transform: scale(0.95);
+}
+
+
+/* Testo dentro il triangolo */
+#answer {
+    position: absolute;
+    color:black;
+    font-size: 1.6em; /* Puoi aumentare a 1.8em se vuoi un po' più grande */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+
+@media (max-width: 400px) {
+    .ball {
+        width: 80vw;
+        height: 80vw;
+    }
+
+    .white-circle {
+        width: 40%;
+        height: 40%;
+    }
+
+    .triangle {
+        border-left: 30px solid transparent;
+        border-right: 30px solid transparent;
+        border-bottom: 50px solid rgb(111, 2, 111);
+    }
+
+    #answer {
+        font-size: 16px;
+    }
+}
+
+
+.neon-title {
+    font-size: 2.5em;
+    font-style: italic;
+    color: #d400ff;
+    text-align: center;
+    text-shadow: 0 0 5px #d400ff, 0 0 10px #a600cc, 0 0 20px #7a0099, 0 0 40px #550066;
+    font-family: "Pacifico", cursive;
+    margin-bottom: 20px;
+    animation: flicker 1.5s infinite alternate;
+    /*position: relative;
+    top: -30px;   Sposta la scritta un po' più vicino alla palla */
+}
+
+/* Effetto di sfarfallio del neon */
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
