@@ -123,9 +123,9 @@ body {
     }
 
     .triangle {
-        border-left: 30px solid transparent;
-        border-right: 30px solid transparent;
-        border-bottom: 50px solid rgb(111, 2, 111);
+        border-left: 50px solid transparent; /* Dimensioni più piccole per schermi piccoli */
+        border-right: 50px solid transparent;
+        border-bottom: 80px solid rgb(87, 4, 87);
     }
 
     #answer {
