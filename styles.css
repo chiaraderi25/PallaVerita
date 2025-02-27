@@ -83,15 +83,20 @@ body {
 /* Testo dentro il triangolo */
 #answer {
     position: absolute;
-    color:black;
-    font-size: 1.6em; /* Puoi aumentare a 1.8em se vuoi un po' più grande */
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    color: rgb(32, 2, 2); /* Colore del testo */
+    font-weight: bold;
+    font-size: 1.5em; /* Aumenta la dimensione del font se necessario */
+    text-align: center;
+    font-family: 'Arial Narrow', sans-serif; /* Usa Arial Narrow */
+    width: 80%;
+    text-shadow: 0 0 5px #d400ff, 
+                 0 0 10px #d400ff, 
+                 0 0 15px #a600cc; /* Ombre per effetto neon */
 }
+
 
 @keyframes shake {
     0% { transform: translateX(0); }
