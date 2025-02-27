@@ -1,31 +1,10 @@
 // Possibili risposte
 const responses = [
     "Sì", "No", "Forse", "Non contarci",
-    "Decisamente sì", "NO NO NO", "Dubito fortemente","GO GILR"
+    "Decisamente sì", "NO NO NO", "Dubito fortemente", "GO GIRL","ovvio che si","certo","non pensarci prioprio", "scusa?"
 ];
 
-let lastUpdate = 0;
-
-// Rileva accelerazione del telefono
-window.addEventListener("devicemotion", (event) => {
-    let acceleration = event.accelerationIncludingGravity;
-
-    if (!acceleration) return;
-
-    let currentTime = new Date().getTime();
-    if (currentTime - lastUpdate < 1000) return; // Evita ripetizioni eccessive
-
-    let shakeThreshold = 15; // Sensibilità dello scuotimento
-
-    let totalAcceleration = Math.abs(acceleration.x) + Math.abs(acceleration.y) + Math.abs(acceleration.z);
-
-    if (totalAcceleration > shakeThreshold) {
-        lastUpdate = currentTime;
-        shakeBall();
-    }
-});
-
-// Funzione che scuote la palla e mostra la risposta
+// Funzione che mostra una risposta casuale quando si fa clic sulla palla
 function shakeBall() {
     let ball = document.querySelector(".ball");
     let answer = document.getElementById("answer");
@@ -40,4 +19,9 @@ function shakeBall() {
         answer.innerText = responses[Math.floor(Math.random() * responses.length)];
     }, 500);
 }
+
+// Aggiungi un evento di clic alla palla
+document.querySelector(".ball").addEventListener("click", shakeBall);
+
+
 
